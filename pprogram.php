@@ -5,7 +5,7 @@ function checkProgramCode($conn,$progcode)
 {
     $found = false;
     $sql = "SELECT programcode FROM programs WHERE programcode='".$progcode."'";
-    $qry = mysqli_query($sql);
+    $qry = mysqli_query($conn, $sql);
     $row = mysqli_num_rows($qry);
     
     if($row > 0)
@@ -16,7 +16,7 @@ function checkProgramCode($conn,$progcode)
 }
 
 $progcode = strtoupper($_POST['progcode']);
-$progname = strtoupper($_POST['progname']);
+$progname = $_POST['progname'];
 
 if (checkProgramCode($conn,$progcode)==true)
 {
